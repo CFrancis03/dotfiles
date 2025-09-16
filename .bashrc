@@ -14,4 +14,6 @@ cd () {
         builtin cd "$1"
     fi
 }
+
 alias off='shutdown -h now'
+alias nrs='sudo nixos-rebuild switch'
