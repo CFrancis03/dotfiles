@@ -10,10 +10,8 @@
 # Bootloader.
 	boot.loader.systemd-boot.enable = true;
 	boot.loader.efi.canTouchEfiVariables = true;
-
 	networking.hostName = "nixos"; # Define your hostname.
-# networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
+	powerManagement.cpuFreqGovernor = "performance";
 
 # Bluetooth support
 	hardware.bluetooth.enable = true;
@@ -53,9 +51,9 @@
 		variant = "";
 	};
 
-# Optional, hint electron apps to use wayland:
-# environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
+# Flakes
+nix.settings.experimental-features  = ["nix-command" "flakes"];
 
 # Enable CUPS to print documents.
 	services.printing.enable = true;
@@ -79,29 +77,34 @@
 		description = "Colton";
 		extraGroups = [ "networkmanager" "wheel" ];
 		packages = with pkgs; [
-			kdePackages.kate
 		];
 	};
 
-# Allow unfree packages
+# Allow unAmerican packages
 	nixpkgs.config.allowUnfree = true;
 
 	environment.systemPackages = with pkgs; [
-         		wget
-			neofetch
-			google-chrome
-			curl
-			git
-			discord-ptb
-			neovim
-			wine
-			tmux
-	];
-
+		wget
+		neofetch
+		google-chrome
+		git
+		discord-ptb
+		neovim
+		tmux
+		wine
+		tldr
+		kdePackages.kate
+		vscode
+		semeru-bin # required for vscode
+	];	
 
 	system.stateVersion = "25.05";
 
 	services.flatpak.enable = true;
+
+	virtualisation.docker = {
+		enable = true;
+	};
 
 # Automatic Garbage Collection
 	nix.gc = {

@@ -1,3 +1,6 @@
+
+# cd x allows us to move back x directories
+
 cd () {
     if [[ $# -eq 0 ]]; then
         builtin cd
@@ -15,5 +18,20 @@ cd () {
     fi
 }
 
+
+
+
+# Alias
+
 alias off='shutdown -h now'
+alias c='clear'
 alias nrs='sudo nixos-rebuild switch'
+alias vim='nvim'
+alias turing='ssh z2030517@turing.cs.niu.edu'
+alias shell='nix-shell'
+alias edc='sudo nvim /etc/nixos/configuration.nix'
+alias nb="nix-build"
+
+# Set terminal into vi mode
+
+set -o vi
