@@ -91,11 +91,10 @@ nix.settings.experimental-features  = ["nix-command" "flakes"];
 		discord-ptb
 		neovim
 		tmux
-		wine
 		tldr
-		kdePackages.kate
 		vscode
-		semeru-bin # required for vscode
+	  	semeru-bin # required for vscode
+		python312Packages.grip # live markdown viewer
 	];	
 
 	system.stateVersion = "25.05";
